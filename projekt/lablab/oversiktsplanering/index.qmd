@@ -2,7 +2,14 @@
 title: "Översiktsplanering"
 format:
   html:
-    allow-html: true
+    theme: cosmo
+    toc: true
+    code-fold: true
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
 ---
 
 <nav aria-label="breadcrumb">
@@ -39,11 +46,177 @@ format:
 
 # Översiktsplanering
 
-Arbete med att koppla GIS-baserade analyser till översiktsplaner och landskapsstrategier.\
-Metoderna utvecklas för att stödja rumsliga beslutsunderlag.
+Analyserna på denna sidar hjälper oss att identifiera kommuner där översiktsplaneringen börjar bli inaktuell. Målet är att kunna rikta kommande anbud och samarbeten mot de kommuner som snart behöver ta fram en ny översiktsplan, så att vi kan erbjuda relevant kompetens i rätt tid.
 
-## Interaktiv karta
+### Kommunernas status i översiktsplaneringen
 
-<iframe src="oversiktsplanering.html" width="100%" height="700" style="border:none; border-radius: 12px; box-shadow: 0 0 8px rgba(0,0,0,0.2);">
+Den här kartan visar kommunernas status i översiktsplaneringen och hur väl de följer upp sitt planarbete genom en planeringsstrategi. Underlaget bygger på öppna data från Boverket, där varje kommuns senaste år med laga kraft för sin översiktsplan (ÖP), antal ändringar och tillägg, samt förekomst av planeringsstrategi har sammanställts.
 
-</iframe>
+Utifrån dessa uppgifter har ett index beräknats som anger hur angeläget det är för en kommun att uppdatera sin översiktsplan. Indexet väger samman åldern på gällande ÖP och om kommunen har en planeringsstrategi eller inte. Kommuner med äldre planer får ett högre grundvärde, medan kommuner utan planeringsstrategi får ett tillägg på indexet. Kommuner som nyligen antagit en ÖP (2022–2024) får däremot ett lågt värde oavsett strategi, eftersom deras planering anses aktuell.
+
+Resultatet visualiseras som ett prioriteringsindex på kartan, där färgerna går från grönt (uppdaterad plan, låg prioritet) till rött (gammal plan, hög prioritet). Kartan kan även visa vilka kommuner som saknar planeringsstrategi samt när deras senaste översiktsplan vann laga kraft.
+
+```{r setup_1}
+library(mapview)
+
+layers <- readRDS("C:/Users/henri/data/processed/map_layers_ultralight.Rds")
+
+
+kommun3 <- layers$kommun3
+kommun2 <- layers$kommun2
+lan <- layers$lan
+kommun_no_plan <- layers$kommun_no_plan
+kommun_no_plan_recent <- layers$kommun_no_plan_recent
+brks_index <- layers$brks_index
+brks_kom <- layers$brks_kom
+pal_fun_index_adj <- layers$pal_fun_index_adj
+pal_fun <- layers$pal_fun
+
+
+mapview(kommun3, zcol = "score",
+             at = brks_index,
+             col.regions = pal_fun_index_adj,
+             alpha.regions = 0.6,
+             legend = TRUE,
+             layer.name = "Prioriteringsindex",
+             popup = leafpop::popupTable(
+               kommun3,
+               zcol = c("kommunnamn", "öp_laga_kraft", "plan_strat", "score"),
+               row.numbers = FALSE
+             )) +
+  mapview(kommun2,
+          zcol = "öp_laga_kraft",
+          at = brks_kom,
+          col.regions = pal_fun,
+          alpha.regions = 0.6,
+          legend = FALSE,
+          layer.name = "Översiktsplaner", hide = TRUE) +
+  mapview(lan,
+          col.regions = NA,
+          color = "black",
+          lwd = 1,
+          alpha.regions = 0,
+          legend = FALSE,
+          layer.name = "Länsgränser", hide = TRUE) +
+  mapview(kommun_no_plan,
+          col.regions = "brown4",
+          alpha.regions = 0.6,
+          legend = TRUE,
+          layer.name = "Saknar planeringsstrategi", hide = TRUE) +
+  mapview(kommun_no_plan_recent,
+          col.regions = "limegreen",
+          alpha.regions = 0.6,
+          legend = TRUE,
+          layer.name = "Saknar planeringsstrategi + ÖP 2022–2024", hide = TRUE)
+```
+
+```{r setup_2}
+# ============================================================
+# Kommunnätverk – interaktiv visualisering med visNetwork
+# ============================================================
+
+library(sf)
+library(spdep)
+library(rmapshaper)
+library(igraph)
+library(dplyr)
+library(tibble)
+library(visNetwork)
+
+# ------------------------------------------------------------
+# 1. Läs in kommundata (med klimatkollen-score)
+# ------------------------------------------------------------
+kommuner_klimatkollen <- readRDS("C:/Users/henri/data/processed/kommuner_klimatkollen_score.Rds")
+
+# Förenkla geometrin för snabbare bearbetning
+kommuner_simplified <- ms_simplify(kommuner_klimatkollen, keep = 0.05, keep_shapes = TRUE)
+
+# ------------------------------------------------------------
+# 2. Skapa grannrelationer (vilka kommuner gränsar till varandra)
+# ------------------------------------------------------------
+nb <- poly2nb(kommuner_simplified, row.names = kommuner_simplified$kommun)
+
+# Gör en lista över grannar
+edge_list <- data.frame(
+  from = rep(1:length(nb), lengths(nb)),
+  to   = unlist(nb)
+)
+
+# Skapa uppslagstabell mellan index och kommunkod
+id_map <- tibble(index = seq_along(nb), kommunkod = kommuner_simplified$kommun)
+
+# Namnge kanter med kommunkoder
+edges_named <- edge_list %>%
+  as_tibble() %>%
+  left_join(id_map, by = c("from" = "index")) %>%
+  rename(from_kod = kommunkod) %>%
+  left_join(id_map, by = c("to" = "index")) %>%
+  rename(to_kod = kommunkod) %>%
+  dplyr::select(from_kod, to_kod) %>%
+  distinct()  # Ta bort dubbletter (A–B = B–A)
+
+# ------------------------------------------------------------
+# 3. Skapa grafobjekt och attribut
+# ------------------------------------------------------------
+g <- graph_from_data_frame(edges_named, directed = FALSE)
+
+kommun_meta <- kommuner_simplified %>%
+  st_drop_geometry() %>%
+  dplyr::select(kommun, kommunnamn, Region)
+
+V(g)$namn <- kommun_meta$kommunnamn[match(V(g)$name, kommun_meta$kommun)]
+V(g)$lan  <- kommun_meta$Region[match(V(g)$name, kommun_meta$kommun)]
+
+# ------------------------------------------------------------
+# 4. Skapa noder och kanter för visNetwork
+# ------------------------------------------------------------
+nodes <- kommuner_simplified %>%
+  st_drop_geometry() %>%
+  transmute(
+    id    = kommun,
+    label = kommunnamn,
+    group = Region,
+    value = score,
+    title = paste0(
+      "<b>", kommunnamn, "</b><br>",
+      "Region: ", Region, "<br>",
+      "Score: ", score, "<br>",
+      "Planstrategi: ", plan_strat, "<br>",
+      "ÖP laga kraft: ", öp_laga_kraft
+    )
+  )
+
+score_lookup <- nodes %>%
+  dplyr::select(id, value)
+
+edges_df <- igraph::as_data_frame(g, what = "edges") %>%
+  left_join(score_lookup, by = c("from" = "id")) %>%
+  rename(score_from = value) %>%
+  left_join(score_lookup, by = c("to" = "id")) %>%
+  rename(score_to = value) %>%
+  mutate(value = score_from + score_to)
+```
+
+### **Kommunernas topologiska nätverk**
+
+Denna interaktiva visualisering visar ett **topologiskt nätverk** över Sveriges kommuner. Varje nod representerar en kommun, och länkarna visar grannrelationer – alltså kommuner som delar en geografisk gräns. Noderna är färgade efter län och skalas efter ett index. Länkarnas tjocklek påverkas av summan av de anslutna kommunernas värden, vilket gör det möjligt att ana kluster av kommuner med liknande förutsättningar.
+
+Till skillnad från en vanlig karta bygger denna figur inte på geografiska koordinater, utan på **topologiska samband**. Layouten styrs av en fysikmodell (Barnes–Hut) där noder repellerar varandra samtidigt som länkarna fungerar som fjädrar. Kommuner med många grannar tenderar därför att dras mot centrum, medan mer isolerade kommuner hamnar längre ut. Resultatet blir en “svävande” struktur som visar **relationer i närhetsnätverket**, snarare än kommunernas faktiska läge i Sverige.
+
+```{r network}
+# ------------------------------------------------------------
+# 5. Rita interaktiv nätverksgraf
+# ------------------------------------------------------------
+visNetwork(nodes, edges_df) %>%
+  visEdges(smooth = FALSE) %>%
+  visNodes(scaling = list(min = 10, max = 200)) %>%
+  visPhysics(
+    stabilization = TRUE,
+    barnesHut = list(
+      gravitationalConstant = -500000,
+      springLength = 150,
+      springConstant = 0.005
+    )
+  ) %>%
+  visOptions(highlightNearest = TRUE, nodesIdSelection = TRUE)
+```
