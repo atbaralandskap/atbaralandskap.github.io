@@ -1,0 +1,35 @@
+---
+title: "Projekt"
+---
+
+# Våra projekt
+
+En översikt över våra pågående arbeten och samarbeten.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+#### Förna – En matskog i en växthusr ruin
+Underlag, kartor och analyser kopplade till utlysningen.  
+[Öppna](forna/index.qmd){.btn .btn-primary}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+#### Lablab – Konsortium
+Samarbete mellan planeringsaktörer och forskare.  
+[Öppna](lablab/index.qmd){.btn .btn-primary}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+#### Min Nötodling
+Planering och design av nötodling med skogsträdgård.  
+[Öppna](min_notodling/index.qmd){.btn .btn-primary}
+:::
+
+:::
+
+---
+
+# 
+
+# 

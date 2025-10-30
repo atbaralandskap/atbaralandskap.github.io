@@ -1,0 +1,16 @@
+---
+title: "Ätbara landskap AB"
+format:
+  html:
+    title-block: false
+---
+
+Vi arbetar i gränslandet mellan **Samhällsplanering**, **GIS** och **Agroforestry**.  
+Denna webbplats samlar våra projekt, metoder och samarbeten.
+
+---
+
+## Navigera
+- [Projekt](projekt/index.qmd)
+- [Manifest](manifest.qmd)
+- [CV – Henrik Aldén](cv.qmd)

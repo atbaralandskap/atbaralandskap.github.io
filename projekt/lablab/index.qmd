@@ -1,0 +1,58 @@
+---
+title: "Lablab + Ätbara landskap - Ett konsortium"
+format:
+  html:
+    allow-html: true
+---
+
+<nav aria-label="breadcrumb">
+
+<ol class="breadcrumb">
+
+<li class="breadcrumb-item">
+
+<a href="../../index.html">Hem</a>
+
+</li>
+
+<li class="breadcrumb-item">
+
+<a href="../index.html">Projekt</a>
+
+</li>
+
+<li class="breadcrumb-item active" aria-current="page">
+
+Lablab
+
+</li>
+
+</ol>
+
+</nav>
+
+Vi arbetar i korsningen mellan planering, data och experiment.\
+Här samlar vi analyser, texter och kartor kopplade till samarbetet. Här är några av våra pågående arbeten inom Lablab Konsortium.
+
+:::::: grid
+::: {.g-col-12 .g-col-md-6}
+#### 🗺️ Översiktsplanering
+
+Utveckling av metoder för att analysera rumsliga samband mellan planeringsunderlag och ekologiska nätverk.\
+[Öppna](oversiktsplanering/index.qmd){.btn .btn-outline-primary}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+#### 🌊 Formas – Blå Transformation
+
+Ett forskningsprojekt finansierat av Formas, med fokus på vattennära stadsutveckling och klimatförändringar.\
+[Öppna](formas_bla_transformation/index.qmd){.btn .btn-outline-primary}
+:::
+
+::: {.g-col-12 .g-col-md-6}
+#### ✍️ Textanalys
+
+Analys av forsknings- och planeringsdokument med hjälp av NLP och språkmodeller.\
+[Öppna](textanalys/index.qmd){.btn .btn-outline-primary}
+:::
+::::::

@@ -1,0 +1,43 @@
+---
+title: "Textanalys"
+format:
+  html:
+    allow-html: true
+---
+
+<nav aria-label="breadcrumb">
+
+<ol class="breadcrumb">
+
+<li class="breadcrumb-item">
+
+<a href="../../../index.html">Hem</a>
+
+</li>
+
+<li class="breadcrumb-item">
+
+<a href="../../index.html">Projekt</a>
+
+</li>
+
+<li class="breadcrumb-item">
+
+<a href="../index.html">Lablab</a>
+
+</li>
+
+<li class="breadcrumb-item active" aria-current="page">
+
+Textanalys
+
+</li>
+
+</ol>
+
+</nav>
+
+# Textanalys
+
+Automatiserad analys av planeringsdokument, forskningsrapporter och politiska texter.\
+Fokus ligger på att identifiera teman, begrepp och kopplingar mellan texter.

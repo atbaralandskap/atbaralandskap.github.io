@@ -1,0 +1,29 @@
+---
+title: "CV – Henrik Aldén"
+format: html
+editor: visual
+---
+
+## \# CV – Henrik Aldén
+
+\*(Kort introduktion; fyll på med erfarenhet, utbildning, verktyg.)\*
+
+\## Erfarenhet
+
+\- \*\*GIS-analytiker / konsult\*\* (år–nu) – Kort beskrivning.
+
+\- \*\*Stadsplanering\*\* – …
+
+\## Utbildning
+
+\- …
+
+\## Verktyg
+
+R, PostGIS, QGIS, ArcGIS Pro, Quarto, GitHub Pages, Python (pandas), m.m.
+
+\## Kontakt
+
+\- E-post: info\@atbaralandskap.se
+
+\- GitHub: \[atbaralandskap\](https://github.com/atbaralandskap)

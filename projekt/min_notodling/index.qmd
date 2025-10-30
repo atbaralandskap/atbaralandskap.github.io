@@ -1,0 +1,35 @@
+---
+title: "Min Nötodling"
+---
+
+<nav aria-label="breadcrumb">
+
+<ol class="breadcrumb">
+
+<li class="breadcrumb-item">
+
+<a href="../../index.qmd">Hem</a>
+
+</li>
+
+<li class="breadcrumb-item">
+
+<a href="../index.qmd">Projekt</a>
+
+</li>
+
+<li class="breadcrumb-item active" aria-current="page">
+
+Min Nötodling
+
+</li>
+
+</ol>
+
+</nav>
+
+# Min Nötodling
+
+Planering och design av en nötodling med skogsträdgårdsprinciper.
+
+------------------------------------------------------------------------

@@ -1,0 +1,16 @@
+---
+title: "Manifest"
+format: html
+editor: visual
+---
+
+# Manifest
+
+Vi arbetar i gränslandet mellan planering, GIS och landskapsanalys.\
+Principer:
+
+1.  **Öppenhet** – reproducibla metoder, öppna format när möjligt.\
+2.  **Skalbarhet** – från karta till beslutsunderlag.\
+3.  **Ekologi + människa** – metod möter sammanhang.
+
+*(Finslipa texten när du vill.)*

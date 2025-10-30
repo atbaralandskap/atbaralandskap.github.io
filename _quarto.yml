@@ -1,0 +1,40 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - about.qmd
+    - manifest.qmd
+    - cv.qmd
+    - projekt/**
+
+website:
+  title: ""
+  navbar:
+    logo: images/logo.png
+
+    left:
+      - href: index.qmd
+        text: "Hem"
+      - href: projekt/index.qmd
+        text: "Projekt"
+      - href: manifest.qmd
+        text: "Manifest"
+      - href: cv.qmd
+        text: "CV"
+      - href: about.qmd
+        text: "Kontakt"
+  page-footer:
+    left: "© Ätbara landskap"
+    right: "orgnr: 32987239727"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    css: styles.css
+
+
+
+

@@ -1,0 +1,28 @@
+---
+title: "Formas – Blå Transformation"
+format:
+  html:
+    allow-html: true
+---
+
+\<nav aria-label="breadcrumb"\>
+
+\<ol class="breadcrumb"\>
+
+\<li class="breadcrumb-item"\>\<a href="../../../index.html"\>Hem\</a\>\</li\>
+
+\<li class="breadcrumb-item"\>\<a href="../../index.html"\>Projekt\</a\>\</li\>
+
+\<li class="breadcrumb-item"\>\<a href="../index.html"\>Lablab\</a\>\</li\>
+
+\<li class="breadcrumb-item active" aria-current="page"\>Formas – Blå Transformation\</li\>
+
+\</ol\>
+
+\</nav\>
+
+\# Formas – Blå Transformation
+
+Forskning om kustnära planering, vattenbalans och klimatrelaterad stadsutveckling.
+
+Projektet utforskar metoder för GIS-stöd i vattennära miljöer.
