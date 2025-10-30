@@ -37,7 +37,6 @@ Textanalys
 
 </nav>
 
-# Textanalys
+# Rubenson metoden 2.0
 
-Automatiserad analys av planeringsdokument, forskningsrapporter och politiska texter.\
-Fokus ligger på att identifiera teman, begrepp och kopplingar mellan texter.
+Automatiserad textanalys av planeringsdokument. Fokus ligger på att identifiera teman, begrepp och kopplingar mellan texter. Metoden är under utveckling.

@@ -8,10 +8,10 @@ En översikt över våra pågående arbeten och samarbeten.
 
 :::::: grid
 ::: {.g-col-12 .g-col-md-6}
-#### Förna – En matskog i en växthusr ruin
+#### Förna – En matskog i en växthusruin
 
-Underlag, kartor och analyser kopplade till utlysningen.\
-[Öppna](forna/index.qmd){.btn .btn-primary}
+Webbutik och hemsida till föreningen Förna i Bästekille\
+[Öppna](#0){.btn .btn-primary}
 :::
 
 ::: {.g-col-12 .g-col-md-6}

@@ -13,7 +13,3 @@ Ett särskilt verktyg i arbetet är OpenAI:s ChatGPT, som används för att fels
 
 ---
 
-## Navigera
-- [Projekt](projekt/index.qmd)
-- [Manifest](manifest.qmd)
-- [CV – Henrik Aldén](cv.qmd)

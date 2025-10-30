@@ -48,7 +48,7 @@ execute:
 
 Analyserna på denna sida hjälper oss att identifiera kommuner där översiktsplaneringen börjar bli inaktuell. Målet är att kunna rikta kommande anbud och samarbeten mot de kommuner som snart behöver ta fram en ny översiktsplan, så att vi kan erbjuda relevant kompetens i rätt tid.
 
-### Kommunernas status i översiktsplaneringen
+### Status i översiktsplaneringen
 
 Kartan nedan visar status i översiktsplaneringen och hur väl de svenska kommunerna följer upp sitt planarbete genom en planeringsstrategi. Underlaget bygger på öppna data från Boverket, där varje kommuns senaste år med laga kraft för sin översiktsplan (ÖP), antal ändringar och tillägg, samt förekomst av planeringsstrategi har sammanställts.
 
@@ -197,7 +197,7 @@ edges_df <- igraph::as_data_frame(g, what = "edges") %>%
   mutate(value = score_from + score_to)
 ```
 
-### **Kommunernas topologiska nätverk**
+### **Ett topologisk nätverk**
 
 Den interaktiva visualiseringen nedan visar ett **topologiskt nätverk** över Sveriges kommuner. Varje nod representerar en kommun, och länkarna visar grannrelationer – alltså kommuner som delar en geografisk gräns. Noderna är färgade efter län och skalas efter ett index. Länkarnas tjocklek påverkas av summan av de anslutna kommunernas värden, vilket gör det möjligt att ana kluster av kommuner med liknande förutsättningar.
 
