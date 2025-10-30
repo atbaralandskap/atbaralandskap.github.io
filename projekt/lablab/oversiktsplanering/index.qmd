@@ -46,11 +46,11 @@ execute:
 
 # Översiktsplanering
 
-Analyserna på denna sidar hjälper oss att identifiera kommuner där översiktsplaneringen börjar bli inaktuell. Målet är att kunna rikta kommande anbud och samarbeten mot de kommuner som snart behöver ta fram en ny översiktsplan, så att vi kan erbjuda relevant kompetens i rätt tid.
+Analyserna på denna sida hjälper oss att identifiera kommuner där översiktsplaneringen börjar bli inaktuell. Målet är att kunna rikta kommande anbud och samarbeten mot de kommuner som snart behöver ta fram en ny översiktsplan, så att vi kan erbjuda relevant kompetens i rätt tid.
 
 ### Kommunernas status i översiktsplaneringen
 
-Den här kartan visar kommunernas status i översiktsplaneringen och hur väl de följer upp sitt planarbete genom en planeringsstrategi. Underlaget bygger på öppna data från Boverket, där varje kommuns senaste år med laga kraft för sin översiktsplan (ÖP), antal ändringar och tillägg, samt förekomst av planeringsstrategi har sammanställts.
+Kartan nedan visar status i översiktsplaneringen och hur väl de svenska kommunerna följer upp sitt planarbete genom en planeringsstrategi. Underlaget bygger på öppna data från Boverket, där varje kommuns senaste år med laga kraft för sin översiktsplan (ÖP), antal ändringar och tillägg, samt förekomst av planeringsstrategi har sammanställts.
 
 Utifrån dessa uppgifter har ett index beräknats som anger hur angeläget det är för en kommun att uppdatera sin översiktsplan. Indexet väger samman åldern på gällande ÖP och om kommunen har en planeringsstrategi eller inte. Kommuner med äldre planer får ett högre grundvärde, medan kommuner utan planeringsstrategi får ett tillägg på indexet. Kommuner som nyligen antagit en ÖP (2022–2024) får däremot ett lågt värde oavsett strategi, eftersom deras planering anses aktuell.
 
@@ -199,7 +199,7 @@ edges_df <- igraph::as_data_frame(g, what = "edges") %>%
 
 ### **Kommunernas topologiska nätverk**
 
-Denna interaktiva visualisering visar ett **topologiskt nätverk** över Sveriges kommuner. Varje nod representerar en kommun, och länkarna visar grannrelationer – alltså kommuner som delar en geografisk gräns. Noderna är färgade efter län och skalas efter ett index. Länkarnas tjocklek påverkas av summan av de anslutna kommunernas värden, vilket gör det möjligt att ana kluster av kommuner med liknande förutsättningar.
+Den interaktiva visualiseringen nedan visar ett **topologiskt nätverk** över Sveriges kommuner. Varje nod representerar en kommun, och länkarna visar grannrelationer – alltså kommuner som delar en geografisk gräns. Noderna är färgade efter län och skalas efter ett index. Länkarnas tjocklek påverkas av summan av de anslutna kommunernas värden, vilket gör det möjligt att ana kluster av kommuner med liknande förutsättningar.
 
 Till skillnad från en vanlig karta bygger denna figur inte på geografiska koordinater, utan på **topologiska samband**. Layouten styrs av en fysikmodell (Barnes–Hut) där noder repellerar varandra samtidigt som länkarna fungerar som fjädrar. Kommuner med många grannar tenderar därför att dras mot centrum, medan mer isolerade kommuner hamnar längre ut. Resultatet blir en “svävande” struktur som visar **relationer i närhetsnätverket**, snarare än kommunernas faktiska läge i Sverige.
 

@@ -6,29 +6,30 @@ title: "Projekt"
 
 En översikt över våra pågående arbeten och samarbeten.
 
-::: {.grid}
-
+:::::: grid
 ::: {.g-col-12 .g-col-md-6}
 #### Förna – En matskog i en växthusr ruin
-Underlag, kartor och analyser kopplade till utlysningen.  
+
+Underlag, kartor och analyser kopplade till utlysningen.\
 [Öppna](forna/index.qmd){.btn .btn-primary}
 :::
 
 ::: {.g-col-12 .g-col-md-6}
 #### Lablab – Konsortium
-Samarbete mellan planeringsaktörer och forskare.  
+
+Ett samarbete mellan Ätbara Landskap och tankesmedjan LabLab.\
 [Öppna](lablab/index.qmd){.btn .btn-primary}
 :::
 
 ::: {.g-col-12 .g-col-md-6}
 #### Min Nötodling
-Planering och design av nötodling med skogsträdgård.  
+
+Planering och design av min nötodling.\
 [Öppna](min_notodling/index.qmd){.btn .btn-primary}
 :::
+::::::
 
-:::
-
----
+------------------------------------------------------------------------
 
 # 
 
