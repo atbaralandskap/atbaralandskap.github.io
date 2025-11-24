@@ -11,6 +11,47 @@ execute:
   warning: false
   message: false
 ---
+
+```{r}
+options(scipen = 999)
+
+source("C:/funktioner/funktioner.R")
+
+source("C:/funktioner/landuse_funktioner.R")
+
+
+topo_path <- "C:/Users/henri/data/topologi10/mark_sverige.gpkg"
+
+sormland_res <- analyse_region_landuse(
+  src_path  = topo_path,
+  src_layer = "mark",
+  region    = "Södermanland",   # eller "2584"
+  buffer_km = 0,
+  value     = "pct_area"
+)
+
+
+```
+
+
+```{r}
+sormland_res$plot        # diagram
+```
+
+```{r}
+
+sormland_res$stats       # tabell
+```
+
+```{r}
+mapview_landuse_res(sormland_res, "objekttyp")
+```
+
+
+
+
+
+
 # Diagram med ggplot
 ggplot2 är ett R-paket för att skapa tydliga och flexibla datavisualiseringar baserade på det grammatiska ramverket för grafik.
 girafe (från paketet ggiraph) bygger vidare på ggplot2 och gör diagrammen interaktiva, så att användaren kan hovra över element för att se information i verktygstips eller markera objekt visuellt.
