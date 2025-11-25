@@ -25,8 +25,8 @@ website:
       - href: about.qmd
         text: "Kontakt"
   page-footer:
-    left: "© Ätbara landskap"
-    right: "orgnr: 32987239727"
+    left: "© Ätbara landskap AB"
+    right: "Holmavägen 119, 27745 Sankt Olof, 0733795320, orgnr: 32987239727"
 
 format:
   html:
